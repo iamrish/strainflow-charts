@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Dropdown from "./components/Dropdown";
+import countries from "./dummyData/countries";
+import VerticalHeader from "./components/VerticalHeader";
 
-function App() {
+const App = () => {
+  const [countrySelection, onCountrySelect] = useState({
+    country: countries[0].country,
+    cases: [...countries[0].cases],
+    min: [...countries[0].min],
+    max: [...countries[0].max],
+    mean: [...countries[0].mean],
+    preds: [...countries[0].preds],
+  });
+  // const [monthSelection, onMonthSelect] = useState(months[0]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="ui grid stackable">
+      <div className="ui row">
+        <div
+          className="centered twelve wide column"
+          style={{ paddingTop: "50px" }}
         >
-          Learn React
-        </a>
-      </header>
+          <Dropdown
+            selection={countrySelection}
+            label={"Country"}
+            onSelect={onCountrySelect}
+            options={countries}
+          />
+        </div>
+      </div>
+      <VerticalHeader country={countrySelection} />
     </div>
   );
-}
+};
 
 export default App;
