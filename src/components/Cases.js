@@ -65,7 +65,7 @@ const labels1 = [
 
 const labels2 = [...labels1, "Jul' 21", "Aug '21"];
 
-const VerticalHeader = ({ country }) => {
+const Cases = ({ country }) => {
   // console.log(country);
   const state1 = {
     labels: labels1,
@@ -154,4 +154,4 @@ const VerticalHeader = ({ country }) => {
   );
 };
 
-export default VerticalHeader;
+export default Cases;

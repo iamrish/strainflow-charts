@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Dropdown from "./components/Dropdown";
 import countries from "./dummyData/countries";
-import VerticalHeader from "./components/VerticalHeader";
+import Cases from "./components/Cases";
+import logo from "./images/logo.png";
 
 const App = () => {
   const [countrySelection, onCountrySelect] = useState({
@@ -17,9 +18,16 @@ const App = () => {
   return (
     <div className="ui grid stackable">
       <div className="ui row">
+        <img
+          src={logo}
+          alt="STRAINFLOW"
+          style={{ paddingLeft: "20px", paddingTop: "10px" }}
+        />
+      </div>
+      <div className="ui row">
         <div
           className="centered twelve wide column"
-          style={{ paddingTop: "50px" }}
+          style={{ paddingTop: "20px" }}
         >
           <Dropdown
             selection={countrySelection}
@@ -29,7 +37,7 @@ const App = () => {
           />
         </div>
       </div>
-      <VerticalHeader country={countrySelection} />
+      <Cases country={countrySelection} />
     </div>
   );
 };
