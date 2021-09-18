@@ -135,18 +135,18 @@ const Cases = ({ country }) => {
       <div className="eight wide column">
         <div className="ui segment">
           <Line
-            data={state1}
-            options={options1}
-            style={{ paddingLeft: "20px" }}
+            data={state2}
+            options={options2}
+            style={{ paddingRight: "20px" }}
           />
         </div>
       </div>
       <div className="eight wide column">
         <div className="ui segment">
           <Line
-            data={state2}
-            options={options2}
-            style={{ paddingRight: "20px" }}
+            data={state1}
+            options={options1}
+            style={{ paddingLeft: "20px" }}
           />
         </div>
       </div>

@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 import Dropdown from "./components/Dropdown";
-import countries from "./dummyData/countries";
 import Cases from "./components/Cases";
-import logo from "./images/logo.png";
+import Header from "./components/Header";
+import Entropy from "./components/Entropy";
+
+import countries from "./dummyData/countries";
+import entropies from "./dummyData/entropies";
 
 const App = () => {
   const [countrySelection, onCountrySelect] = useState({
@@ -16,28 +20,33 @@ const App = () => {
   // const [monthSelection, onMonthSelect] = useState(months[0]);
 
   return (
-    <div className="ui grid stackable">
-      <div className="ui row">
-        <img
-          src={logo}
-          alt="STRAINFLOW"
-          style={{ paddingLeft: "20px", paddingTop: "10px" }}
-        />
-      </div>
-      <div className="ui row">
-        <div
-          className="centered twelve wide column"
-          style={{ paddingTop: "20px" }}
-        >
-          <Dropdown
-            selection={countrySelection}
-            label={"Country"}
-            onSelect={onCountrySelect}
-            options={countries}
-          />
+    <div>
+      <BrowserRouter>
+        <div>
+          <Header />
         </div>
-      </div>
-      <Cases country={countrySelection} />
+        <div className="ui grid stackable">
+          <Route path="/" exact>
+            <div className="ui row">
+              <div
+                className="centered twelve wide column"
+                style={{ paddingTop: "20px" }}
+              >
+                <Dropdown
+                  selection={countrySelection}
+                  label={"Country"}
+                  onSelect={onCountrySelect}
+                  options={countries}
+                />
+              </div>
+            </div>
+            <Cases country={countrySelection} />
+          </Route>
+          <Route path="/entropy-plots" exact>
+            <Entropy entropies={entropies} />
+          </Route>
+        </div>
+      </BrowserRouter>
     </div>
   );
 };
