@@ -3,9 +3,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Dropdown from "./components/Dropdown";
 import Cases from "./components/Cases";
 import Header from "./components/Header";
-import Entropy from "./components/Entropy";
 
 import countries from "./dummyData/countries";
+import EntropyToggler from "./components/EntropyToggler";
 import entropies from "./dummyData/entropies";
 
 const App = () => {
@@ -43,7 +43,8 @@ const App = () => {
             <Cases country={countrySelection} />
           </Route>
           <Route path="/entropy-plots" exact>
-            <Entropy entropies={entropies} />
+            <EntropyToggler entropies={entropies} />
+            {/* <Entropy /> */}
           </Route>
         </div>
       </BrowserRouter>

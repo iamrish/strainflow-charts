@@ -15,34 +15,51 @@ const options = {
         },
       },
     ],
+    xAxes: [
+      {
+        scaleLabel: {
+          display: true,
+          labelString: "Latent Dimesions",
+          fontSize: 12,
+          padding: 10,
+        },
+      },
+    ],
   },
 };
 
-const Entropy = ({ entropies }) => {
-  const datasets = [];
+const labels = [];
 
-  const labels = [];
+for (let i = 1; i <= 36; i++) labels.push(i);
 
-  for (let i = 0; i < 10; i++)
-    datasets.push({
-      label: entropies[i].country,
+const Entropy = ({ selection1, selection2 }) => {
+  // console.log(entropies);
+  const datasets = [
+    {
+      label: selection1.country,
       fill: false,
       lineTension: 0.1,
-      data: entropies[i].dimensionSum,
-      backgroundColor: entropies[i].colour,
-      borderColor: entropies[i].colour,
-    });
-  for (let i = 1; i <= 36; i++) labels.push(i);
-
+      data: selection1.dimensionSum,
+      backgroundColor: "rgb(255, 99, 132)",
+      borderColor: "rgb(255, 99, 132)",
+    },
+    {
+      label: selection2.country,
+      fill: false,
+      lineTension: 0.1,
+      data: selection2.dimensionSum,
+      backgroundColor: "rgb(204, 239, 255)",
+      borderColor: "rgb(77, 198, 255)",
+    },
+  ];
   const state = {
     labels: labels,
     datasets: datasets,
   };
-  console.log(entropies);
 
   return (
     <div className="ui row" style={{ paddingTop: "50px" }}>
-      <div className="centered twelve wide column">
+      <div className="centered ">
         <div className="ui segment">
           <Line data={state} options={options} />
         </div>
