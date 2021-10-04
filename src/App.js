@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 import Dropdown from "./components/Dropdown";
 import Cases from "./components/Cases";
 import Header from "./components/Header";
@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <div>
-      <BrowserRouter>
+      <HashRouter>
         <div>
           <Header />
         </div>
@@ -47,7 +47,7 @@ const App = () => {
             {/* <Entropy /> */}
           </Route>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 };
