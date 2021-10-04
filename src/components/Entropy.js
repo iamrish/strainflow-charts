@@ -7,6 +7,11 @@ const options = {
       {
         position: "left",
         id: "Entropy",
+        ticks: {
+          min: 2,
+          max: 13,
+          stepSize: 1,
+        },
         scaleLabel: {
           display: true,
           labelString: "Sum of Entropies",
