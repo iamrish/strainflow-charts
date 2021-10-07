@@ -24,7 +24,7 @@ const options = {
       {
         scaleLabel: {
           display: true,
-          labelString: "Latent Dimesions",
+          labelString: "Latent Dimensions",
           fontSize: 12,
           padding: 10,
         },
