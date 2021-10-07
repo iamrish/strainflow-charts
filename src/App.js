@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { HashRouter, Route } from "react-router-dom";
 import Dropdown from "./components/Dropdown";
 import Cases from "./components/Cases";
-import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar/Navbar.js";
+import Socials from "./components/Socials";
+import Paper from "./components/Paper";
 
 import countries from "./dummyData/countries";
 import EntropyToggler from "./components/EntropyToggler";
@@ -17,15 +20,17 @@ const App = () => {
     mean: [...countries[0].mean],
     preds: [...countries[0].preds],
   });
+  const [clicked, setClicked] = useState(false);
   // const [monthSelection, onMonthSelect] = useState(months[0]);
 
   return (
     <div>
       <HashRouter>
-        <div>
-          <Header />
+        <Navbar clicked={clicked} setClicked={setClicked} />
+        <div style={{ textAlign: "right", fontSize: "13px" }}>
+          Last updated on 08-10-2021
         </div>
-        <div className="ui grid stackable">
+        <div className="ui grid stackable" style={{ opacity: clicked ? 0 : 1 }}>
           <Route path="/" exact>
             <div className="ui row">
               <div
@@ -44,9 +49,13 @@ const App = () => {
           </Route>
           <Route path="/entropy-plots" exact>
             <EntropyToggler entropies={entropies} />
-            {/* <Entropy /> */}
+          </Route>
+          <Route path="/paper" exact>
+            <Paper />
           </Route>
         </div>
+        <Socials clicked={clicked} />
+        <Footer clicked={clicked} />
       </HashRouter>
     </div>
   );
