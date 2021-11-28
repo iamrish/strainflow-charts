@@ -61,9 +61,13 @@ const labels1 = [
   "Apr '21",
   "May '21",
   "Jun '21",
+  "Jul '21",
+  "Aug '21",
+  "Sep' 21",
+  "Oct '21",
 ];
 
-const labels2 = [...labels1, "Jul' 21", "Aug '21"];
+const labels2 = [...labels1, "Nov '21", "Dec '21"];
 
 const Cases = ({ country }) => {
   // console.log(country);
