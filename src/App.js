@@ -6,21 +6,29 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar/Navbar.js";
 import Socials from "./components/Socials";
 import Paper from "./components/Paper";
+import Cards from "./components/Cards";
 
-import countries from "./dummyData/countries";
+import countries from "./data/countries";
+import countries_old from "./data/countries";
 import EntropyToggler from "./components/EntropyToggler";
-import entropies from "./dummyData/entropies";
+import entropies from "./data/entropies";
 
 const App = () => {
   const [countrySelection, onCountrySelect] = useState({
-    country: countries[0].country,
-    cases: [...countries[0].cases],
-    min: [...countries[0].min],
-    max: [...countries[0].max],
-    mean: [...countries[0].mean],
-    preds: [...countries[0].preds],
+    country: [...countries[3].country],
+    cases: [...countries[3].cases],
+    min: [...countries[3].min],
+    max: [...countries[3].max],
+    mean: [...countries[3].mean],
+    preds: [...countries[3].preds],
   });
   const [clicked, setClicked] = useState(false);
+
+  let cardCountry = { ...countrySelection };
+  for (const c of countries_old) {
+    if (c.country === countrySelection.country) cardCountry = { ...c };
+  }
+
   // const [monthSelection, onMonthSelect] = useState(months[0]);
 
   return (
@@ -46,6 +54,14 @@ const App = () => {
               </div>
             </div>
             <Cases country={countrySelection} />
+            <div className="ui row">
+              <div className="centered three wide column">
+                <div style={{ textAlign: "center" }}>
+                  <h2>Previous Prediction</h2>
+                </div>
+              </div>
+            </div>
+            <Cards country={cardCountry} />
           </Route>
           <Route path="/entropy-plots" exact>
             <EntropyToggler entropies={entropies} />
