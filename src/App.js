@@ -23,19 +23,20 @@ const App = () => {
     preds: [...countries[3].preds],
   });
 
-  let cardCountry = {
-    country: countries_old[3].country,
-    cases: [...countries_old[3].cases],
-    min: [...countries_old[3].min],
-    max: [...countries_old[3].max],
-    mean: [...countries_old[3].mean],
-    preds: [...countries_old[3].preds],
-  };
   const [clicked, setClicked] = useState(false);
+  let cardCountry;
 
   for (const c of countries_old) {
     if (c.country === countrySelection.country) {
-      cardCountry = { ...c };
+      cardCountry = {
+        country: c.country,
+        cases: [...c.cases],
+        min: [...c.min],
+        max: [...c.max],
+        mean: [...c.mean],
+        preds: [...c.preds],
+      };
+      // console.log(countries_old[3], c, cardCountry);
     }
   }
 
