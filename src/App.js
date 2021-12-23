@@ -9,7 +9,7 @@ import Paper from "./components/Paper";
 import Cards from "./components/Cards";
 
 import countries from "./data/countries";
-import countries_old from "./data/countries";
+import countries_old from "./data/countries_old";
 import EntropyToggler from "./components/EntropyToggler";
 import entropies from "./data/entropies";
 
@@ -26,7 +26,10 @@ const App = () => {
 
   let cardCountry = { ...countrySelection };
   for (const c of countries_old) {
-    if (c.country === countrySelection.country) cardCountry = { ...c };
+    if (c.country === countrySelection.country) {
+      cardCountry = { ...c };
+      console.log(c === countrySelection);
+    }
   }
 
   // const [monthSelection, onMonthSelect] = useState(months[0]);
@@ -36,7 +39,7 @@ const App = () => {
       <HashRouter>
         <Navbar clicked={clicked} setClicked={setClicked} />
         <div style={{ textAlign: "right", fontSize: "13px" }}>
-          Last updated on 08-10-2021
+          Last updated on 23-12-2021
         </div>
         <div className="ui grid stackable" style={{ opacity: clicked ? 0 : 1 }}>
           <Route path="/" exact>

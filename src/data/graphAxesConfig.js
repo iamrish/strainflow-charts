@@ -63,6 +63,7 @@ export const labels1 = [
   "Sep' 21",
   "Oct '21",
   "Nov '21",
+  "Dec '21",
 ];
 
-export const labels2 = [...labels1, "Dec '21", "Jan '22"];
+export const labels2 = [...labels1, "Jan '22"];

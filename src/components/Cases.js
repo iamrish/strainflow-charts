@@ -6,7 +6,7 @@ import { options1, labels1, labels2 } from "../data/graphAxesConfig";
 const Cases = ({ country }) => {
   // console.log(country);
   const state1 = {
-    labels: labels1,
+    labels: labels1.slice(0, -1),
     datasets: [
       {
         label: "Cases",
