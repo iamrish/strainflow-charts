@@ -15,24 +15,29 @@ import entropies from "./data/entropies";
 
 const App = () => {
   const [countrySelection, onCountrySelect] = useState({
-    country: [...countries[3].country],
+    country: countries[3].country,
     cases: [...countries[3].cases],
     min: [...countries[3].min],
     max: [...countries[3].max],
     mean: [...countries[3].mean],
     preds: [...countries[3].preds],
   });
+
+  let cardCountry = {
+    country: countries_old[3].country,
+    cases: [...countries_old[3].cases],
+    min: [...countries_old[3].min],
+    max: [...countries_old[3].max],
+    mean: [...countries_old[3].mean],
+    preds: [...countries_old[3].preds],
+  };
   const [clicked, setClicked] = useState(false);
 
-  let cardCountry = { ...countrySelection };
   for (const c of countries_old) {
     if (c.country === countrySelection.country) {
       cardCountry = { ...c };
-      console.log(c === countrySelection);
     }
   }
-
-  // const [monthSelection, onMonthSelect] = useState(months[0]);
 
   return (
     <div>
