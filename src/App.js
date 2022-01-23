@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HashRouter, Route } from "react-router-dom";
+
 import Dropdown from "./components/Dropdown";
 import Cases from "./components/Cases";
 import Footer from "./components/Footer";
@@ -9,43 +10,44 @@ import Paper from "./components/Paper";
 import Cards from "./components/Cards";
 
 import countries from "./data/countries";
-import countries_old from "./data/countries_old";
+// import countries_old from "./data/countries_old";
 import EntropyToggler from "./components/EntropyToggler";
 import entropies from "./data/entropies";
+// console.log(entropies);
+
+const lastUpdatedDate = "23-01-22";
 
 const App = () => {
-  const [countrySelection, onCountrySelect] = useState({
-    country: countries[3].country,
-    cases: [...countries[3].cases],
-    min: [...countries[3].min],
-    max: [...countries[3].max],
-    mean: [...countries[3].mean],
-    preds: [...countries[3].preds],
-  });
-
+  const [countrySelection, onCountrySelect] = useState("India");
+  // const [caseData, setCaseData] = useState(null);
+  // const [entropyData, setEntropyData] = useState(null);
+  // const [allEntropy, setAllEntropy] = useState(null);
+  // const [countries, setCountries] = useState(null);
   const [clicked, setClicked] = useState(false);
-  let cardCountry;
 
-  for (const c of countries_old) {
-    if (c.country === countrySelection.country) {
-      cardCountry = {
-        country: c.country,
-        cases: [...c.cases],
-        min: [...c.min],
-        max: [...c.max],
-        mean: [...c.mean],
-        preds: [...c.preds],
-      };
-      // console.log(countries_old[3], c, cardCountry);
+  let caseData = null;
+  let entropyData = null;
+  let countryList = [];
+
+  for (const obj of countries) {
+    if (obj.country === countrySelection) {
+      caseData = { ...obj };
     }
+    countryList.push(obj.country);
   }
 
+  for (const obj of entropies) {
+    if (obj.country === countrySelection) {
+      entropyData = { ...obj };
+      break;
+    }
+  }
   return (
     <div>
       <HashRouter>
         <Navbar clicked={clicked} setClicked={setClicked} />
         <div style={{ textAlign: "right", fontSize: "13px" }}>
-          Last updated on 23-12-2021
+          Last updated on {lastUpdatedDate}
         </div>
         <div className="ui grid stackable" style={{ opacity: clicked ? 0 : 1 }}>
           <Route path="/" exact>
@@ -58,11 +60,11 @@ const App = () => {
                   selection={countrySelection}
                   label={"Country"}
                   onSelect={onCountrySelect}
-                  options={countries}
+                  options={countryList}
                 />
               </div>
             </div>
-            <Cases country={countrySelection} />
+            <Cases country={caseData} entropy={entropyData} />
             <div className="ui row">
               <div className="centered three wide column">
                 <div style={{ textAlign: "center" }}>
@@ -70,10 +72,10 @@ const App = () => {
                 </div>
               </div>
             </div>
-            <Cards country={cardCountry} />
+            <Cards country={caseData.prev} />
           </Route>
           <Route path="/entropy-plots" exact>
-            <EntropyToggler entropies={entropies} />
+            <EntropyToggler entropies={entropies} options={countryList} />
           </Route>
           <Route path="/paper" exact>
             <Paper />
@@ -82,6 +84,7 @@ const App = () => {
         <Socials clicked={clicked} />
         <Footer clicked={clicked} />
       </HashRouter>
+      )
     </div>
   );
 };

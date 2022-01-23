@@ -9,7 +9,7 @@ const options = {
         id: "Entropy",
         ticks: {
           min: 2,
-          max: 18,
+          max: 20,
           stepSize: 1,
         },
         scaleLabel: {

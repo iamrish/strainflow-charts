@@ -4,6 +4,7 @@ import { Line } from "react-chartjs-2";
 import { options2 } from "../data/graphAxesConfig";
 
 const CasesLeftGraph = ({ country, labels }) => {
+  // console.log(country);
   const state = {
     labels: labels,
     datasets: [

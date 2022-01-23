@@ -1,12 +1,12 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import CasesLeftGraph from "./CasesLeftGraph";
-import { options1, labels1, labels2 } from "../data/graphAxesConfig";
+import { options1 } from "../data/graphAxesConfig";
 
 const Cases = ({ country }) => {
   // console.log(country);
   const state1 = {
-    labels: labels1.slice(0, -1),
+    labels: country.caseDates,
     datasets: [
       {
         label: "Cases",
@@ -46,10 +46,9 @@ const Cases = ({ country }) => {
       },
     ],
   };
-
   return (
     <div className="ui row">
-      <CasesLeftGraph country={country} labels={labels2} />
+      <CasesLeftGraph country={country} labels={country.predDates} />
 
       <div className="eight wide column">
         <div className="ui segment">

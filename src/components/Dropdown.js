@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 
 const Dropdown = ({ selection, onSelect, options, label }) => {
   const [open, setOpen] = useState(false);
-  // console.log(selection.country, options[0].country);
+  // console.log(selection, options);
 
   const onBodyClick = (event) => {
     if (ref.current.contains(event.target)) return null;
@@ -22,18 +22,13 @@ const Dropdown = ({ selection, onSelect, options, label }) => {
   }, []);
 
   const renderedList = options.map((option) => {
-    if (option.country === selection.country) return null;
+    if (option === selection) return null;
     return (
-      <div
-        key={option.country}
-        onClick={() => onSelect({ ...option })}
-        className="item"
-      >
-        {option.country}
+      <div key={option} onClick={() => onSelect(option)} className="item">
+        {option}
       </div>
     );
   });
-
   const ref = useRef();
   return (
     <div ref={ref} className="ui form">
@@ -44,7 +39,7 @@ const Dropdown = ({ selection, onSelect, options, label }) => {
           className={`ui selection dropdown ${open ? "visible active" : ""}`}
         >
           <i className="dropdown icon"></i>
-          <div className="text">{selection.country}</div>
+          <div className="text">{selection}</div>
           <div className={`menu ${open ? "visible transition" : ""}`}>
             {renderedList}
           </div>

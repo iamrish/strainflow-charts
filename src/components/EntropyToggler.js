@@ -3,16 +3,22 @@ import Entropy from "./Entropy";
 import Dropdown from "./Dropdown";
 let count = 0;
 
-const EntropyToggler = ({ entropies }) => {
-  const [select1, onSelect1] = useState(entropies[0]);
-  const [select2, onSelect2] = useState(entropies[1]);
+const EntropyToggler = ({ entropies, options }) => {
+  console.log(entropies);
+  const [select1, onSelect1] = useState("India");
+  const [select2, onSelect2] = useState("Brazil");
   let style = "";
+  let entropy1, entropy2;
 
   const renderList = (fontSize) => {
     const renderedList = entropies.map((entropy) => {
-      if (entropy.country === select1.country) style = "active red";
-      else if (entropy.country === select2.country) style = "active blue";
-      else style = "";
+      if (entropy.country === select1) {
+        style = "active red";
+        entropy1 = { ...entropy };
+      } else if (entropy.country === select2) {
+        style = "active blue";
+        entropy2 = { ...entropy };
+      } else style = "";
       return (
         // eslint-disable-next-line jsx-a11y/anchor-is-valid
         <div
@@ -22,17 +28,17 @@ const EntropyToggler = ({ entropies }) => {
           onClick={() => {
             if (
               count % 2 === 0 &&
-              entropy.country !== select1.country &&
-              entropy.country !== select2.country
+              entropy.country !== select1 &&
+              entropy.country !== select2
             ) {
-              onSelect1(entropy);
+              onSelect1(entropy.country);
               count = (count + 1) % 2;
             } else if (
               count % 2 !== 0 &&
-              entropy.country !== select2.country &&
-              entropy.country !== select1.country
+              entropy.country !== select2 &&
+              entropy.country !== select1
             ) {
-              onSelect2(entropy);
+              onSelect2(entropy.country);
               count = (count + 1) % 2;
             }
           }}
@@ -55,13 +61,13 @@ const EntropyToggler = ({ entropies }) => {
           <Dropdown
             selection={select1}
             onSelect={onSelect1}
-            options={entropies}
+            options={options}
             label={"Select the first one"}
           />
           <Dropdown
             selection={select2}
             onSelect={onSelect2}
-            options={entropies}
+            options={options}
             label={"Select the second one"}
           />
         </div>
@@ -76,7 +82,7 @@ const EntropyToggler = ({ entropies }) => {
       </div>
       <div className="ui row centered" style={{ marginTop: "-25px" }}>
         <div className="centered ten wide column">
-          <Entropy selection1={select1} selection2={select2} />
+          <Entropy selection1={entropy1} selection2={entropy2} />
         </div>
       </div>
     </>
