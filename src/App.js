@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HashRouter, Route } from "react-router-dom";
+import { cloneDeep } from "lodash";
 
 import Dropdown from "./components/Dropdown";
 import Cases from "./components/Cases";
@@ -15,7 +16,7 @@ import EntropyToggler from "./components/EntropyToggler";
 import entropies from "./data/entropies";
 // console.log(entropies);
 
-const lastUpdatedDate = "23-01-22";
+const lastUpdatedDate = "08-03-22";
 
 const App = () => {
   const [countrySelection, onCountrySelect] = useState("India");
@@ -31,14 +32,14 @@ const App = () => {
 
   for (const obj of countries) {
     if (obj.country === countrySelection) {
-      caseData = { ...obj };
+      caseData = cloneDeep(obj);
     }
     countryList.push(obj.country);
   }
 
   for (const obj of entropies) {
     if (obj.country === countrySelection) {
-      entropyData = { ...obj };
+      entropyData = cloneDeep;
       break;
     }
   }
@@ -68,7 +69,7 @@ const App = () => {
             <div className="ui row">
               <div className="centered three wide column">
                 <div style={{ textAlign: "center" }}>
-                  <h2>Previous Prediction</h2>
+                  <h2>Previous Predictions</h2>
                 </div>
               </div>
             </div>

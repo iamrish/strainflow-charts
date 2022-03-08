@@ -31,7 +31,10 @@ const CasesLeftGraph = ({ country, labels }) => {
       <div className="ui segment">
         <Line
           data={state}
-          options={options2}
+          options={{
+            ...options2,
+            title: { display: true, text: country.month, fontSize: 20 },
+          }}
           style={{ paddingRight: "20px" }}
         />
       </div>

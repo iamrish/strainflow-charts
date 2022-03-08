@@ -2,6 +2,7 @@ import React from "react";
 import CasesLeftGraph from "./CasesLeftGraph";
 
 const Cards = (country) => {
+  console.log(country.country);
   const history = country.country.map((c) => {
     return (
       <div className="centered seven wide column">
@@ -9,7 +10,6 @@ const Cards = (country) => {
       </div>
     );
   });
-  console.log(country);
   return <>{history}</>;
 };
 
