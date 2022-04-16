@@ -85,7 +85,6 @@ const App = () => {
         <Socials clicked={clicked} />
         <Footer clicked={clicked} />
       </HashRouter>
-      )
     </div>
   );
 };

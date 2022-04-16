@@ -78,7 +78,11 @@ const Socials = ({ clicked }) => {
       <span
         className="platform"
         style={{ padding: "0px 2px" }}
-        onClick={() => window.open("https://web.whatsapp.com")}
+        onClick={() =>
+          window.open(
+            "https://api.whatsapp.com/send?text=Check this out! A great Covid predictor. Masks on, peeps! http://strainflow.tavlab.iiitd.edu.in/"
+          )
+        }
       >
         <svg
           aria-hidden="true"
