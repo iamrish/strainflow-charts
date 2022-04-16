@@ -60,6 +60,7 @@ const countries = [
       "Dec-21",
       "Jan-22",
       "Feb-22",
+      "Mar-22",
     ],
     predDates: [
       "Mar-20",
@@ -88,6 +89,7 @@ const countries = [
       "Feb-22",
       "Mar-22",
       "Apr-22",
+      "May-22",
     ],
     preds: [
       null,
