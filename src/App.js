@@ -16,7 +16,7 @@ import EntropyToggler from "./components/EntropyToggler";
 import entropies from "./data/entropies";
 // console.log(entropies);
 
-const lastUpdatedDate = "15-06-22";
+const lastUpdatedDate = "23-07-22";
 
 const App = () => {
   const [countrySelection, onCountrySelect] = useState("India");
