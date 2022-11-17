@@ -728,6 +728,92 @@ const countries = [
   },
 
   {
+    country: "France",
+    month: "Sep '22",
+    cases: [
+      2711907, 748609, 862452, 
+    ],
+    caseDates: [
+      "Jul-22",
+      "Aug-22",
+      "Sep-22",
+    ],
+    predDates: [
+      "Sep-22",
+      "Oct-22",
+      "Nov-22",
+    ],
+    min: [
+      0.5742859777, 0.277529701, 0.250315926, 
+    ],
+    max: [
+      1.648658626, 0.4705399661, 0.4813498056, 
+    ],
+    mean: [
+      1.038731803, 0.3645648673, 0.3569637965, 
+    ],
+    preds: [
+      null,
+      null,
+      733075.73785,
+      1764490.1254,
+      1812609.30901667,
+    ],
+    prev: [
+      {
+        month: "Jul '22",
+        cases: [
+          2711907, 
+        ],
+        caseDates: [
+          "Jul-22",
+        ],
+        predDates: [
+          "Aug-22",
+        ],
+        preds: [
+          null,
+          null,
+          733075.73785,
+        ],
+      },
+      {
+        month: "Aug '22",
+        cases: [
+          2711907, 748609, 
+        ],
+        caseDates: [
+          "Jan-22",
+          "Feb-22",
+          "Mar-22",
+          "Apr-22",
+          "May-22",
+          "Jun-22",
+          "Jul-22",
+          "Aug-22",
+        ],
+        predDates: [
+          "Jan-22",
+          "Feb-22",
+          "Mar-22",
+          "Apr-22",
+          "May-22",
+          "Jun-22",
+          "Jul-22",
+          "Sep-22",
+          "Oct-22",
+        ],
+        preds: [
+          null,
+          null,
+          733075.73785,
+          1764490.1254,
+        ],
+      },
+    ],
+  },
+
+  {
     country: "England",
     month: "Jul '22",
     cases: [
